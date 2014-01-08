@@ -5,9 +5,13 @@ html
     meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1')
     title How to Cook a Graph Database in a Night
 
+    link(rel="icon", type="image/png", href="/images/favicon.png")
+    link(rel="apple-touch-icon", type="image/png" href="/images/default-apple-touch-icon.png")
+
     // build:css styles/styles.css
     //- Check out 'src/bower_components/prism/themes/' for available themes
     link(rel='stylesheet', type='text/css', href='bower_components/prism/themes/prism-tomorrow.css')
+    link(rel="stylesheet", type='text/css', href="bower_components/font-awesome/css/font-awesome.min.css")
     link(rel='stylesheet', type='text/css', href='styles/main.css')
     // endbuild
 
@@ -20,8 +24,38 @@ html
         h3 <a href="http://twitter.com/matteocollina">@matteocollina</a>
 
       section
-        h2 Keyboard Interaction
-        h3 Powered by <a href="https://github.com/markdalgleish/bespoke-keys">bespoke-keys</a>
+        h2 What is a Graph Database?
+
+      section
+        h3(style="text-align: left; width: 500px")
+          i(style="float: left; padding-right: 20px").fa.fa-quote-left.fa-2x
+          | a graph database is any storage system that provides index-free adjacency
+          br
+        h3
+          em Anonymous Wikipedian
+
+      section.full-imgs
+        h2 The smallest possible graph
+        div
+          img(src="/images/basic_graph.png")
+
+      section.full-imgs
+        h2 LevelGraph
+        div
+          img(src="/images/logo.png")
+
+        h3.bullet <a href="http://github.com/mcollina/levelgraph">http://github.com/mcollina/levelgraph</a>
+
+      section
+        h2 LevelGraph
+        ul
+          li v0.1.0 built on the night between the 25th and 26th of April 2013
+          li v0.8.0 released this Christmas
+          li 250+ commits and counting
+          li works on Node and in the Browser
+          li small in size (&lt; 1000 lines of code)
+          li big on dependencies (~ 11000 lines of code)
+          li fast ;)
 
       section
         h2 Touch Interaction
