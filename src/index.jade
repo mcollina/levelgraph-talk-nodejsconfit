@@ -109,62 +109,145 @@ html
       section(data-bespoke-state='cooking')
         h2 LevelUp!
         br
-        h3
+        h3.bullet
           a(href="http://github.com/rvagg/node-levelup", style="color: white") http://github.com/rvagg/node-levelup
+        h3.bullet
+          em The 
+          a(href="http://leveldb.googlecode.com") LevelDB 
+          | library for Node.js
+        h3.bullet
+          a(href="http://leveldb.googlecode.com") LevelDB 
+          | is an 
+          em ordered 
+          | key-value store that can be embedded in ANY app
+
         .copyright
           a(href="http://500px.com/photo/52159764", style="color: white") http://500px.com/photo/52159764 &nbsp;
           a(href="http://creativecommons.org/licenses/by/3.0/deed.en_US")
             img(src="/images/cc_attribution.png")
 
       section.full-imgs
+        h2 LevelDB
+        br
+        br
+        div
+          div(style="width: 40%; float: right; display: inline-block; text-align: left;")
+            | basic features:
+            ul.bullet
+              li get
+              li put
+              li del
+              li batch
+              li ordered iterator
+          div(style="width: 50%; display: inline-block; float: left;")
+            img(src="/images/example_leveldb.png")
+
+      section
+        h2 LevelUp
+        pre
+          code.language-javascript.
+            var db = levelup('your_database')
+            db.put('a', 'b', function() {
+              db.put('b', 'c', function() {
+                db.get('a', alert)
+              })
+            })
+
+      section
+        h2 ReadStream
+        pre
+          code.language-javascript.
+            var db = levelup('your_database')
+            var stream = db.createReadStream({
+              start: 'a',
+              end: 'd'
+            })
+
+            stream.on('data', alert)
+
+      section
+        h2 How to use LevelUp to build a Graph Database
+        h1
+          i.fa.fa-question-circle.fa-2x
+
+        h3 Let's build an Hexastore!
+
+      section.full-imgs
+        h2 Hexastore
+        br
+        br
+        div
+          div(style="width: 50%; text-align: left; float: right; display: inline-block;")
+            | We store 6 keys for each triple:
+            ul.bullet
+              li spo::A::C::B
+              li sop::A::B::C
+              li ops::B::C::A
+              li osp::B::A::C
+              li pso::C::A::B
+              li pos::C::B::A
+          div(style="width: 60%; display: inline-block; float: left; margin-left: -10%;")
+            img(src="/images/basic_graph.png")
+
+      section.full-imgs
+        h2 Put a Triple in LevelDB
+        pre
+          code.language-javascript.
+            var db = levelup('your_database')
+            var triple = JSON.stringify({
+              subject: 'A',
+              predicate: 'C',
+              object: 'B'
+            })
+            db.batch([
+              { key: 'spo::A::C::B', value: triple },
+              { key: 'sop::A::B::C', value: triple },
+              { key: 'ops::B::C::A', value: triple },
+              { key: 'osp::B::A::C', value: triple },
+              { key: 'pso::C::A::B', value: triple },
+              { key: 'pos::C::B::A', value: triple }
+            ])
+
+      section
+        h2 Ask a Triple to LevelDB
+        p
+          em all nodes that are connected by "C"
+        pre
+          code.language-javascript.
+            var db = levelup('your_database')
+            var stream = db.createReadStream({
+              start: 'pso::C::',
+              end:   'pso::C::\xff'
+            })
+
+            stream.on('data', alert)
+
+      section.full-imgs
         h2 LevelGraph
         div
           img(src="/images/logo.png")
 
-        h3.bullet <a href="http://github.com/mcollina/levelgraph">http://github.com/mcollina/levelgraph</a>
+        h3 <a href="http://github.com/mcollina/levelgraph">http://github.com/mcollina/levelgraph</a>
 
       section
         h2 LevelGraph
         ul
-          li v0.1.0 built on the night between the 25th and 26th of April 2013
-          li v0.8.0 released this Christmas
+          li is an Hexastore built on LevelDB and LevelUp
+          li v0.1.0 was built on the night between the 25th and 26th of April 2013
+          li v0.8.0 was released this Christmas
           li 250+ commits and counting
           li works on Node and in the Browser
-          li small in size (&lt; 1000 lines of code)
+          li small in size (&lt; 1000 own lines of code)
           li big on dependencies (~ 11000 lines of code)
-          li fast ;)
+          li fast, LG reads up to 50K triples per second
 
       section
-        h2 Syntax Highlighting
-        h3 Powered by <a href="http://twitter.com/LeaVerou">Lea Verou</a>'s <a href="https://github.com/LeaVerou/prism">Prism</a>
-        hr
-        pre
-          code.language-javascript.
-            bespoke.from('article', {
-              keys: true,
-              touch: true,
-              hash: true,
-              state: true,
-              bullets: 'li, .bullet'
-            });
-
-      section(data-bespoke-hash='named-route')
-        h2 Named Route
-        h3 Powered by <a href="https://github.com/markdalgleish/bespoke-hash">bespoke-hash</a>
-        p Look up! This route has been named with a <em>'data-bespoke-hash'</em> attribute.
-
-      section
-        h2.bullet Just the beginning...
-        hr
-        ul
-          li Edit <a href="http://jade-lang.com/">Jade</a> markup in <em>'src/index.jade'</em>
-          li Edit <a href="http://learnboost.github.io/stylus/">Stylus</a> styles in <em>'src/styles/main.styl'</em>
-          li Edit JavaScript in <em>'src/scripts/main.js'</em>
-        hr
-        ul
-          li
-            strong Enjoy! :)
-            a(href='http://twitter.com/markdalgleish')  -@markdalgleish
+        h1 Thanks!
+        br
+        p If you need help with node.js:
+        br
+        h3 <a href="http://twitter.com/matteocollina">@matteocollina</a>
+        h3 <a href="http://www.matteocollina.com">www.matteocollina.com</a>
 
     // build:js scripts/scripts.js
     script(src='bower_components/bespoke.js/dist/bespoke.min.js')
