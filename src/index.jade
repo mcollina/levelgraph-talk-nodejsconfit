@@ -76,6 +76,29 @@ html
           div(style="width: 70%; display: inline-block; float: left; margin-left: -10%;")
             img(src="/images/basic_graph.png")
 
+      section.full-imgs
+        h2 Query Examples
+        br
+        br
+        div
+          div(style="width: 40%; float: right; display: inline-block;")
+            ul.bullet
+              li Give me all the vertex that go from "A"
+              li Give me all the pairs connected by "C"
+              li Give me all the vertex that go to "B"
+              li Give me all the vertex that go to "B" <em>through "C"</em>
+              li ...
+          div(style="width: 70%; display: inline-block; float: left; margin-left: -10%;")
+            img(src="/images/basic_graph.png")
+
+      section.full-imgs
+        h2 Hexastore: the fastest data structure for a Graph
+        img(src="/images/hexastore.png")
+        .copyright
+          a(href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.140.8776&rep=rep1&type=pdf")
+            | Weiss et al.,
+            em "Hexastore: Sextuple Indexing for Semantic Web Data Management"
+
       section(data-bespoke-state='cooking')
         h2 My Secret Ingredient for a Graph Database
         .copyright
