@@ -146,12 +146,14 @@ html
         h2 LevelUp
         pre
           code.language-javascript.
+            alert("hello world")
             var db = levelup('your_database')
             db.put('a', 'b', function() {
               db.put('b', 'c', function() {
                 db.get('a', alert)
               })
             })
+        a(data-bespoke-run) Run!
 
       section
         h2 ReadStream
@@ -259,6 +261,8 @@ html
     script(src='bower_components/bespoke-progress/dist/bespoke-progress.min.js')
     script(src='bower_components/bespoke-state/dist/bespoke-state.min.js')
     script(src='bower_components/bespoke-forms/dist/bespoke-forms.min.js')
+    script(src='bower_components/bespoke-run/dist/bespoke-run.js')
+    script(src='bower_components/jquery/jquery.min.js')
     script(src='bower_components/prism/prism.js')
     script(src='bower_components/levelgraph/build/levelgraph.min.js')
     script(src='scripts/main.js')

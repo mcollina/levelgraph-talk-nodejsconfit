@@ -13,6 +13,7 @@
     "bespoke-forms": "~0.1.0",
     "levelgraph": "~0.8.0",
     "prism": "gh-pages",
-    "font-awesome": "~4.0.3"
+    "font-awesome": "~4.0.3",
+    "bespoke-run": "~0.0.2"
   }
 }

@@ -6,5 +6,6 @@ bespoke.from('article', {
   hash: true,
   progress: true,
   state: true,
-  forms: true
+  forms: true,
+  run: true
 });
