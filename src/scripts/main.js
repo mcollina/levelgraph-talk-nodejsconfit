@@ -9,3 +9,8 @@ bespoke.from('article', {
   forms: true,
   run: true
 });
+
+function level(name) {
+  var levelup = require('levelup')
+  return levelup(name, { db: require('level-js') });
+}

@@ -113,7 +113,8 @@ module.exports = function(grunt) {
           'stylus',
           'coffee',
           'copy',
-          'favicons'
+          'favicons',
+          'browserify'
         ],
         options: {
           logConcurrentOutput: false
@@ -156,6 +157,16 @@ module.exports = function(grunt) {
       icons: {
         src: 'src/images/logo.png',
         dest: 'public/images'
+      }
+    },
+    browserify: {
+      dist: {
+        files: {
+          'public/scripts/bundle.js': ['levelup', 'level-js', 'memdown', 'levelgraph'],
+        },
+        options: {
+          alias: ['levelup:', 'level-js:', 'memdown:', 'levelgraph:']
+        }
       }
     }
   };

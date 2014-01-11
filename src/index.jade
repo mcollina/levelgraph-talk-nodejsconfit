@@ -146,11 +146,13 @@ html
         h2 LevelUp
         pre
           code.language-javascript.
-            alert("hello world")
-            var db = levelup('your_database')
+            var db = level('your_database')
             db.put('a', 'b', function() {
               db.put('b', 'c', function() {
-                db.get('a', alert)
+                db.get('a', function(err, data) {
+                  alert(JSON.stringify(data))
+                  db.close();
+                })
               })
             })
         a(data-bespoke-run) Run!
@@ -159,13 +161,17 @@ html
         h2 ReadStream
         pre
           code.language-javascript.
-            var db = levelup('your_database')
+            var db = level('your_database')
             var stream = db.createReadStream({
               start: 'a',
               end: 'd'
             })
 
-            stream.on('data', alert)
+            stream.on('data', function(data) {
+              alert(JSON.stringify(data))
+            })
+            stream.on('end', db.close.bind(db))
+        a(data-bespoke-run) Run!
 
       section
         h2 How to use LevelUp to build a Graph Database
@@ -195,20 +201,20 @@ html
         h2 Put a Triple in LevelDB
         pre
           code.language-javascript.
-            var db = levelup('your_database')
+            var db = level('your_database')
             var triple = JSON.stringify({
-              subject: 'A',
-              predicate: 'C',
-              object: 'B'
+              subject: 'A', predicate: 'C', object: 'B'
             })
             db.batch([
-              { key: 'spo::A::C::B', value: triple },
-              { key: 'sop::A::B::C', value: triple },
-              { key: 'ops::B::C::A', value: triple },
-              { key: 'osp::B::A::C', value: triple },
-              { key: 'pso::C::A::B', value: triple },
-              { key: 'pos::C::B::A', value: triple }
-            ])
+              { key: 'spo::A::C::B', value: triple, type: 'put' },
+              { key: 'sop::A::B::C', value: triple, type: 'put' },
+              { key: 'ops::B::C::A', value: triple, type: 'put' },
+              { key: 'osp::B::A::C', value: triple, type: 'put' },
+              { key: 'pso::C::A::B', value: triple, type: 'put' },
+              { key: 'pos::C::B::A', value: triple, type: 'put' }
+            ], db.close.bind(db))
+
+        a(data-bespoke-run) Run!
 
       section
         h2 Ask a Triple to LevelDB
@@ -216,13 +222,19 @@ html
           em all nodes that are connected by "C"
         pre
           code.language-javascript.
-            var db = levelup('your_database')
+            var db = level('your_database')
             var stream = db.createReadStream({
               start: 'pso::C::',
               end:   'pso::C::\xff'
             })
 
-            stream.on('data', alert)
+            stream.on('data', function(data) {
+              alert(data.value)
+            })
+
+            stream.on('end', db.close.bind(db))
+
+        a(data-bespoke-run) Run!
 
       section.full-imgs
         h2 LevelGraph
@@ -264,6 +276,6 @@ html
     script(src='bower_components/bespoke-run/dist/bespoke-run.js')
     script(src='bower_components/jquery/jquery.min.js')
     script(src='bower_components/prism/prism.js')
-    script(src='bower_components/levelgraph/build/levelgraph.min.js')
+    script(src='scripts/bundle.js')
     script(src='scripts/main.js')
     // endbuild

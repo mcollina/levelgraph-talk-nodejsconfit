@@ -19,9 +19,18 @@
     "grunt-gh-pages": "~0.6.0",
     "connect-livereload": "~0.2.0",
     "matchdep": "~0.3.0",
-    "grunt-favicons": "~0.6.0"
+    "grunt-favicons": "~0.6.0",
+    "memdown": "~0.6.0",
+    "levelup": "~0.18.2",
+    "levelgraph": "~0.8.0",
+    "leveldown": "~0.10.2",
+    "browserify": "~3.19.1",
+    "grunt-browserify": "~1.3.0"
   },
   "engines": {
     "node": ">=0.8.0"
+  },
+  "dependencies": {
+    "level-js": "~1.0.8"
   }
 }
