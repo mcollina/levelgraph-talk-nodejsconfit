@@ -253,7 +253,39 @@ html
           li works on Node and in the Browser
           li small in size (&lt; 1000 own lines of code)
           li big on dependencies (~ 11000 lines of code)
+          li available on npm, bower or straight from github
           li fast, LG reads up to 50K triples per second
+
+      section.full-imgs
+        h2 Put Triples in LevelGraph
+        pre
+          code.language-javascript.
+            var graph = levelgraph('your_graph')
+            var triples = [{
+              subject: 'A', predicate: 'C', object: 'B'
+            }, {
+              subject: 'D', predicate: 'C', object: 'E'
+            }]
+            graph.put(triples, function(err) {
+              alert(err || "Successful!")
+              graph.close()
+            })
+
+        a(data-bespoke-run) Run!
+
+      section.full-imgs
+        h2 Ask Triples to LevelGraph
+        p
+          em all nodes that are connected by "C"
+        pre
+          code.language-javascript.
+            var graph = levelgraph('your_graph')
+            graph.get({ predicate: 'C' }, function(err, triples) {
+              alert(JSON.stringify(triples))
+              graph.close();
+            })
+
+        a(data-bespoke-run) Run!
 
       section
         h1 Thanks!

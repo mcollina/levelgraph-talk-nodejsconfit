@@ -14,3 +14,8 @@ function level(name) {
   var levelup = require('levelup')
   return levelup(name, { db: require('level-js') });
 }
+
+function levelgraph(name) {
+  var levelgraph = require('levelgraph')
+  return levelgraph(name);
+}
