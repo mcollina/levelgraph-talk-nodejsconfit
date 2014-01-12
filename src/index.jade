@@ -197,7 +197,7 @@ html
           div(style="width: 60%; display: inline-block; float: left; margin-left: -10%;")
             img(src="/images/basic_graph.png")
 
-      section.full-imgs
+      section
         h2 Put a Triple in LevelDB
         pre
           code.language-javascript.
@@ -254,9 +254,8 @@ html
           li small in size (&lt; 1000 own lines of code)
           li big on dependencies (~ 11000 lines of code)
           li available on npm, bower or straight from github
-          li fast, LG reads up to 50K triples per second
 
-      section.full-imgs
+      section
         h2 Put Triples in LevelGraph
         pre
           code.language-javascript.
@@ -273,19 +272,87 @@ html
 
         a(data-bespoke-run) Run!
 
-      section.full-imgs
+      section
         h2 Ask Triples to LevelGraph
         p
           em all nodes that are connected by "C"
         pre
           code.language-javascript.
             var graph = levelgraph('your_graph')
-            graph.get({ predicate: 'C' }, function(err, triples) {
+            var query = { predicate: 'C' }
+
+            graph.get(query, function(err, triples) {
               alert(JSON.stringify(triples))
               graph.close();
             })
 
         a(data-bespoke-run) Run!
+
+      section
+        h2 Deleting Triples in LevelGraph
+        pre
+          code.language-javascript.
+            var graph = levelgraph('your_graph')
+            var triples = [
+              { subject: 'A', predicate: 'C', object: 'B' },
+              { subject: 'D', predicate: 'C', object: 'E' }
+            ]
+            graph.del(triples, function(err) {
+              graph.get({ predicate: 'C' }, function(err, triples) {
+                alert('LG found ' + triples.length + ' triples')
+                graph.close()
+              })
+            })
+
+        a(data-bespoke-run) Run!
+
+      section
+        h2 Stream Triples in LevelGraph
+        pre
+          code.language-javascript.
+            var graph = levelgraph('your_graph')
+            var stream = graph.putStream()
+
+            stream.write({
+              subject: 'matteo', predicate: 'friend', object: 'lucio'
+            })
+            stream.write({
+              subject: 'lucio', predicate: 'likes', object: 'beer'
+            })
+            stream.write({
+              subject: 'matteo', predicate: 'likes', object: 'beer'
+            })
+            stream.end(null, alert.bind(null, 'Successful!'))
+
+        a(data-bespoke-run) Run!
+
+      section
+        h2 Stream Triples out of LevelGraph
+        p
+          em all people thatl likes beer
+        pre
+          code.language-javascript.
+            var graph = levelgraph('your_graph')
+            var stream = graph.getStream({
+              predicate: 'likes',
+              object: 'beer'
+            })
+            stream.on('data', function(triple) {
+              alert(JSON.stringify(triple))
+            })
+            stream.on('end', graph.close.bind(graph))
+
+        a(data-bespoke-run) Run!
+
+      section
+        h2 How fast is LevelGraph?
+        ul.bullet
+          li 
+            b GET &nbsp;
+            | Up to 50.000 triples per second
+          li
+            b PUT &nbsp;
+            | Up to 22.000 triples per second
 
       section
         h1 Thanks!
