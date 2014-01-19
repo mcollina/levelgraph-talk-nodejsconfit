@@ -34,17 +34,6 @@ module.exports = function(grunt) {
         }
       }
     },
-    coffee: {
-      src: {
-        files: [{
-          expand: true,
-          cwd: 'src/scripts/',
-          src: '**/*.coffee',
-          dest: 'public/scripts/',
-          ext: '.js'
-        }]
-      }
-    },
     copy: {
       src: {
         files: [{
@@ -53,8 +42,7 @@ module.exports = function(grunt) {
           src: [
             '**/*',
             '!<%= jade.src.files[0].src %>',
-            '!<%= stylus.src.files[0].src %>',
-            '!<%= coffee.src.files[0].src %>'
+            '!<%= stylus.src.files[0].src %>'
           ],
           dest: 'public/'
         }]
@@ -68,10 +56,6 @@ module.exports = function(grunt) {
       stylus: {
         files: '<%= stylus.src.files[0].cwd + stylus.src.files[0].src %>',
         tasks: 'stylus'
-      },
-      coffee: {
-        files: '<%= coffee.src.files[0].cwd + coffee.src.files[0].src %>',
-        tasks: 'coffee'
       },
       public: {
         files: [
@@ -111,7 +95,6 @@ module.exports = function(grunt) {
         tasks: [
           'jade',
           'stylus',
-          'coffee',
           'copy',
           'favicons',
           'browserify'
@@ -126,7 +109,6 @@ module.exports = function(grunt) {
           'open',
           'watch:jade',
           'watch:stylus',
-          'watch:coffee',
           'watch:public'
         ],
         options: {
