@@ -320,7 +320,7 @@ html
               subject: 'lucio', predicate: 'likes', object: 'beer'
             })
             stream.write({
-              subject: 'matteo', predicate: 'likes', object: 'beer'
+              subject: 'lucio', predicate: 'lives', object: 'brescia'
             })
             stream.end(null, alert.bind(null, 'Successful!'))
 
@@ -348,11 +348,53 @@ html
         h2 Is it all?
         h3 We did not build a graph &nbsp;
           em just &nbsp;
-          | for this?
+          | for this, right?
+
+      section
+        h2 Searches
+        p(style="width: 100%")
+          em All my friends that like beer and live in Brescia
+
+        pre
+          code.language-javascript.
+            var graph = levelgraph('your_graph')
+            var x = graph.v('x')
+            graph.search([
+              { subject: 'matteo', predicate: 'friend', object: x },
+              { subject: x, predicate: 'likes', object: 'beer' },
+              { subject: x, predicate: 'lives', object: 'brescia' }
+            ], function(err, solutions) {
+              alert(JSON.stringify(solutions))
+              graph.close()
+            })
+
+        a(data-bespoke-run) Run!
+
+      section
+        h2 Searches
+        p(style="width: 100%")
+          em All my friends that like beer and live in Brescia, with Streams
+
+        pre
+          code.language-javascript.
+            var graph = levelgraph('your_graph')
+            var x = graph.v('x')
+            var stream = graph.searchStream([
+              { subject: 'matteo', predicate: 'friend', object: x },
+              { subject: x, predicate: 'likes', object: 'beer' },
+              { subject: x, predicate: 'lives', object: 'brescia' }
+            ]);
+            stream.on('data', function(triple) {
+              alert(JSON.stringify(triple))
+            })
+            stream.on('end', graph.close.bind(graph))
+
+        a(data-bespoke-run) Run!
 
 
       section
         h2 How fast is LevelGraph?
+        i(style="font-size: 500%").fa.fa-rocket
         ul.bullet
           li 
             b GET &nbsp;
@@ -360,6 +402,9 @@ html
           li
             b PUT &nbsp;
             | Up to 22.000 triples per second
+          li
+            b searches &nbsp;
+            | Up to 20.000 triples per second for two conditions
 
       section
         h1 Thanks!
