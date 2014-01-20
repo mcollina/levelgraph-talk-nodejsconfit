@@ -510,6 +510,26 @@ html
             b SEARCH &nbsp;
             | Up to 20.000 triples per second for two conditions
 
+      section
+        h2 ..but I want to store JS Objects!
+
+      section
+        h2 LevelGraph-JSONLD
+        h3 an Object Document Mapper for LevelGraph
+
+        pre
+          code.language-javascript.
+            var db = jsonld(levelgraph('jsonld'));
+            db.jsonld.put({
+              "@context": {
+                "name": "http://xmlns.com/foaf/0.1/name",
+                "knows": "http://xmlns.com/foaf/0.1/knows" },
+              "@id": "http://matteocollina.com",
+              "name": "Matteo",
+              "knows": [ { "name": "Daniele" }
+                         { "name": "Lucio"   } ]
+            })
+
       section.full-imgs
         img(src='images/me.png')
         h3
