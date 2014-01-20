@@ -229,9 +229,119 @@ td
   margin: 0px
   padding: 0px
   opacity: 0.5
-  
+
   a
     color: #404040
 
   img
     height: 10px;
+
+.ecosystem {
+  font-size: 11.5px;
+  text-shadow: 0px 0px 4px white;
+  margin-left: 8px;
+}
+.ecosystem .section {
+  text-align: right;
+  vertical-align: top
+}
+.ecosystem td {
+  padding: 5px;
+  min-height: 10px;
+}
+.ecosystem > tbody > tr > td:nth-child(2) {
+  padding: 0;
+}
+.ecosystem > tbody > tr > td:first-child {
+  padding: 0;
+  xborder: solid 1px white;
+  font-weight: bold;
+}
+.ecosystem > tbody > tr > td:first-child span {
+  display: block;
+  padding: 5px;
+}
+.ecosystem table td {
+  border: solid 1px transparent;
+}
+.ecosystem .tools > td:first-child {
+  background-color: rgba(49, 190, 164, 0.1);
+  color: rgb(36, 138, 119);
+  border: solid 1px transparent;
+}
+.ecosystem .tools table td {
+  border-color: rgb(49, 190, 164);
+  background-color: rgba(49, 190, 164, 0.3);
+}
+.ecosystem .packages > td:first-child {
+  background-color: rgba(55, 134, 177, 0.1);
+  color: rgb(18, 43, 57);
+  border: solid 1px transparent;
+}
+.ecosystem .packages table td {
+  border-color: rgb(55, 134, 177);
+  background-color: rgba(55, 134, 177, 0.3);
+}
+.ecosystem .extensions > td:first-child {
+  background-color: rgba(232, 142, 12, 0.1);
+  color: rgb(108, 76, 8);
+  border: solid 1px transparent;
+}
+.ecosystem .extensions table td {
+  border-color: rgb(232, 142, 12);
+  background-color: rgba(232, 142, 12, 0.3);
+}
+.ecosystem .pluggability > td:first-child {
+  background-color: rgba(108, 12, 232, 0.1);
+  color: rgb(74, 8, 158);
+  border: solid 1px transparent;
+}
+.ecosystem .pluggability table td {
+  border-color: rgb(108, 12, 232);
+  background-color: rgba(108, 12, 232, 0.3);
+}
+.ecosystem .core table {
+  width: 100%;
+}
+.ecosystem .core > td:first-child {
+  background-color: rgba(255, 0, 0, 0.1);
+  color: rgb(134, 0, 0);
+  border: solid 1px transparent;
+}
+.ecosystem .core table td {
+  border-color: rgb(255, 0, 0);
+  background-color: rgba(255, 0, 0, 0.3);
+  text-align: center;
+  font-weight: bold;
+  padding: 13px;
+}
+.ecosystem > tbody > tr.core > td:first-child span {
+  padding: 13px;
+}
+.ecosystem .storage > td:first-child {
+  background-color: rgba(255, 244, 13, 0.1);
+  color: rgb(80, 80, 6);
+}
+.ecosystem .storage table td {
+  border-color: rgb(255, 255, 13);
+  background-color: rgba(255, 255, 13, 0.3);
+}
+.ecosystem .rotate {
+  width: 40px;
+  height: 150px;
+}
+.ecosystem .rotate span {
+  position: absolute;
+  display: block;
+  width: 124px;
+  text-align: left;
+  -webkit-transform-origin: 36px -15px;
+  -moz-transform-origin:    36px -15px;
+  -ms-transform-origin:     36px -15px;
+  -o-transform-origin:      36px -15px;
+  -webkit-transform: rotate(90deg);
+  -moz-transform:    rotate(90deg);
+  -ms-transform:     rotate(90deg);
+  -o-transform:      rotate(90deg);
+}
+
