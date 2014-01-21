@@ -11,11 +11,9 @@ bespoke.from('article', {
 });
 
 function level(name) {
-  var levelup = require('levelup')
+  var levelup = require('levelup');
   return levelup(name, { db: require('level-js') });
 }
 
-function levelgraph(name) {
-  var levelgraph = require('levelgraph')
-  return levelgraph(name);
-}
+levelgraph = require('levelgraph');
+n3 = require('levelgraph-n3');

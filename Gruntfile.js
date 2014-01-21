@@ -144,10 +144,10 @@ module.exports = function(grunt) {
     browserify: {
       dist: {
         files: {
-          'public/scripts/bundle.js': ['levelup', 'level-js', 'memdown', 'levelgraph'],
+          'public/scripts/bundle.js': ['levelup', 'level-js', 'memdown', 'levelgraph', 'levelgraph-n3'],
         },
         options: {
-          alias: ['levelup:', 'level-js:', 'memdown:', 'levelgraph:']
+          alias: ['levelup:', 'level-js:', 'memdown:', 'levelgraph:', 'levelgraph-n3:']
         }
       }
     }

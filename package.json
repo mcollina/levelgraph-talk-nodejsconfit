@@ -24,12 +24,11 @@
     "levelgraph": "~0.8.1",
     "leveldown": "~0.10.2",
     "browserify": "~3.19.1",
-    "grunt-browserify": "~1.3.0"
+    "grunt-browserify": "~1.3.0",
+    "level-js": "~1.0.8",
+    "levelgraph-n3": "~0.3.2"
   },
   "engines": {
-    "node": ">=0.8.0"
-  },
-  "dependencies": {
-    "level-js": "~1.0.8"
+    "node": ">=0.10.0"
   }
 }

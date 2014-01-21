@@ -542,6 +542,64 @@ html
           p David Simonds, The Economist
 
       section.full-imgs
+        h2 Linked Open Data Cloud
+        img(src='images/lod-cloud.png')
+        .copyright
+          p Linking Open Data cloud diagram, by Richard Cyganiak and Anja Jentzsch.&nbsp;
+            a(href='http://lod-cloud.net/') http://lod-cloud.net/
+
+
+      section
+        h2 Our Dataset
+        br
+        pre
+          code#dataset.language-javascript.
+            @prefix c: &lt;http://example.org/cartoons#&gt;.
+            c:Tom   a c:Cat.
+            c:Jerry a c:Mouse;
+                    c:smarterThan c:Tom;
+                    c:place "fantasy".
+
+        br
+        h3 That has id '#dataset'
+
+      section
+        h2 Importing a Dataset
+
+        pre
+          code.language-javascript.
+            var graph = n3(levelgraph("n3"));
+            var dataset = document.querySelector("#dataset");
+
+            graph.n3.put(dataset.innerText, function() {
+              alert("import completed!")
+
+              var stream = graph.getStream({})
+              stream.on('data', function(triple) {
+                alert(JSON.stringify(triple))
+              })
+              stream.on('end', graph.close.bind(graph))
+            });
+
+        a(data-bespoke-run) Run!
+
+      section
+        h2 Importing a Dataset with Streams
+
+        pre
+          code.language-javascript.
+            var graph = n3(levelgraph('n3'));
+            var fs = require("fs");
+
+            var stream = fs.createReadStream("./triples.n3")
+                           .pipe(graph.n3.putStream());
+
+            stream.on("finish", function() {
+              console.log("Import completed");
+              graph.close();
+            });
+
+      section.full-imgs
         img(src='images/me.png')
         h3
           a(href='http://github.com/mcollina') http://github.com/mcollina
