@@ -1,11 +1,15 @@
 # How to Cook a Graph Database in a Night
-> A [Bespoke.js](http://markdalgleish.com/projects/bespoke.js) presentation, built with [generator-bespoke](https://github.com/markdalgleish/generator-bespoke)
+> A [Bespoke.js](http://markdalgleish.com/projects/bespoke.js) presentation
 
-Some links:
+Go check out [LevelGraph](http://levelgraph.io)!
 
-* [LevelGraph](http://levelgraph.io)
-* [LevelUp](http://github.com/rvagg/node-levelup)
-* [LevelDB](https://code.google.com/p/leveldb/)
+If you want to build your own database, check out
+[LevelUp](http://github.com/rvagg/node-levelup)
+and have the amazing ["Level Me Up, Scotty"](http://nodeschool.io/#levelmeup)
+workshopper at [nodeschool](http://nodeschool.io).
+
+All of this would not have been possible without the amazing
+ [LevelDB](https://code.google.com/p/leveldb/), from Google.
 
 ## View slides locally
 
