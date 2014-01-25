@@ -7378,7 +7378,9 @@ function isBuffer (o) {
     || /\[object (.+Array|Array.+)\]/.test(Object.prototype.toString.call(o));
 }
 
-},{"buffer":7}],"XcTrbC":[function(require,module,exports){
+},{"buffer":7}],"levelgraph-n3":[function(require,module,exports){
+module.exports=require('XcTrbC');
+},{}],"XcTrbC":[function(require,module,exports){
 
 var n3 = require("n3")
   , concat = require("concat-stream");
@@ -7477,9 +7479,7 @@ function wrapCallback(method) {
 
 module.exports = levelgraphN3;
 
-},{"concat-stream":30,"n3":33}],"levelgraph-n3":[function(require,module,exports){
-module.exports=require('XcTrbC');
-},{}],30:[function(require,module,exports){
+},{"concat-stream":30,"n3":33}],30:[function(require,module,exports){
 var Buffer=require("__browserify_Buffer");var Writable = require('readable-stream').Writable
 var inherits = require('inherits')
 var TA = require('typedarray')
