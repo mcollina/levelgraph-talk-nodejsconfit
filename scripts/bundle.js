@@ -15604,7 +15604,9 @@ module.exports = {
   , NotFoundError       : NotFoundError
   , EncodingError       : createError('EncodingError', LevelUPError)
 }
-},{"errno":114}],"AH9p1J":[function(require,module,exports){
+},{"errno":114}],"levelup":[function(require,module,exports){
+module.exports=require('AH9p1J');
+},{}],"AH9p1J":[function(require,module,exports){
 var process=require("__browserify_process");/* Copyright (c) 2012-2013 LevelUP contributors
  * See list at <https://github.com/rvagg/node-levelup#contributing>
  * MIT +no-false-attribs License
@@ -16041,9 +16043,7 @@ module.exports.destroy = utilStatic('destroy')
 // DEPRECATED: prefer accessing LevelDOWN for this: require('leveldown').repair()
 module.exports.repair  = utilStatic('repair')
 
-},{"./batch":75,"./errors":76,"./read-stream":79,"./util":80,"./write-stream":81,"__browserify_process":6,"deferred-leveldown":96,"events":3,"prr":115,"util":19,"xtend":123}],"levelup":[function(require,module,exports){
-module.exports=require('AH9p1J');
-},{}],79:[function(require,module,exports){
+},{"./batch":75,"./errors":76,"./read-stream":79,"./util":80,"./write-stream":81,"__browserify_process":6,"deferred-leveldown":96,"events":3,"prr":115,"util":19,"xtend":123}],79:[function(require,module,exports){
 /* Copyright (c) 2012-2013 LevelUP contributors
  * See list at <https://github.com/rvagg/node-levelup#contributing>
  * MIT +no-false-attribs License <https://github.com/rvagg/node-levelup/blob/master/LICENSE>
