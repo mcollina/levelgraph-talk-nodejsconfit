@@ -7378,9 +7378,7 @@ function isBuffer (o) {
     || /\[object (.+Array|Array.+)\]/.test(Object.prototype.toString.call(o));
 }
 
-},{"buffer":7}],"levelgraph-n3":[function(require,module,exports){
-module.exports=require('XcTrbC');
-},{}],"XcTrbC":[function(require,module,exports){
+},{"buffer":7}],"XcTrbC":[function(require,module,exports){
 
 var n3 = require("n3")
   , concat = require("concat-stream");
@@ -7479,7 +7477,9 @@ function wrapCallback(method) {
 
 module.exports = levelgraphN3;
 
-},{"concat-stream":30,"n3":33}],30:[function(require,module,exports){
+},{"concat-stream":30,"n3":33}],"levelgraph-n3":[function(require,module,exports){
+module.exports=require('XcTrbC');
+},{}],30:[function(require,module,exports){
 var Buffer=require("__browserify_Buffer");var Writable = require('readable-stream').Writable
 var inherits = require('inherits')
 var TA = require('typedarray')
@@ -11747,9 +11747,7 @@ JoinStream.prototype._transform = function transform(solution, encoding, done) {
 
 module.exports = JoinStream;
 
-},{"./utilities":58,"./variable":59,"readable-stream":68}],"levelgraph":[function(require,module,exports){
-module.exports=require('J22x9n');
-},{}],"J22x9n":[function(require,module,exports){
+},{"./utilities":58,"./variable":59,"readable-stream":68}],"J22x9n":[function(require,module,exports){
 var process=require("__browserify_process");
 var filterStream = require('./filterstream')
   , materializer = require('./materializerstream')
@@ -11957,7 +11955,9 @@ doActionStream = function(type, leveldb) {
   };
 };
 
-},{"./filterstream":49,"./getdb":50,"./materializerstream":54,"./navigator":55,"./queryplanner":56,"./utilities":58,"./variable":59,"./writestream":60,"__browserify_process":6,"level-writestream":2,"levelup":"AH9p1J","readable-stream":68,"xtend":70}],54:[function(require,module,exports){
+},{"./filterstream":49,"./getdb":50,"./materializerstream":54,"./navigator":55,"./queryplanner":56,"./utilities":58,"./variable":59,"./writestream":60,"__browserify_process":6,"level-writestream":2,"levelup":"AH9p1J","readable-stream":68,"xtend":70}],"levelgraph":[function(require,module,exports){
+module.exports=require('J22x9n');
+},{}],54:[function(require,module,exports){
 
 var Transform = require('readable-stream').Transform
   , materializer = require('./utilities').materializer;
