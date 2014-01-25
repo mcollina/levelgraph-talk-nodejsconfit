@@ -68,11 +68,11 @@ html
         div
           div(style="width: 40%; float: right; display: inline-block;")
             ul.bullet
-              li "A" is called <em>subject</em>
-              li "B" is called <em>object</em>
-              li "A" and "B" are also called <em>vertexes</em>
-              li "C" is called <em>predicate</em>
-              li "C" is also called <em>arc</em>
+              li(data-bespoke-bullet) "A" is called <em>subject</em>
+              li(data-bespoke-bullet) "B" is called <em>object</em>
+              li(data-bespoke-bullet) "A" and "B" are also called <em>vertexes</em>
+              li(data-bespoke-bullet) "C" is called <em>predicate</em>
+              li(data-bespoke-bullet) "C" is also called <em>arc</em>
           div(style="width: 70%; display: inline-block; float: left; margin-left: -10%;")
             img(src="/images/basic_graph.png")
 
@@ -83,11 +83,11 @@ html
         div
           div(style="width: 40%; float: right; display: inline-block;")
             ul.bullet
-              li Give me all the vertex that go from "A"
-              li Give me all the pairs connected by "C"
-              li Give me all the vertex that go to "B"
-              li Give me all the vertex that go to "B" <em>through "C"</em>
-              li ...
+              li(data-bespoke-bullet) Give me all the vertex that go from "A"
+              li(data-bespoke-bullet) Give me all the pairs connected by "C"
+              li(data-bespoke-bullet) Give me all the vertex that go to "B"
+              li(data-bespoke-bullet) Give me all the vertex that go to "B" <em>through "C"</em>
+              li(data-bespoke-bullet) ...
           div(style="width: 70%; display: inline-block; float: left; margin-left: -10%;")
             img(src="/images/basic_graph.png")
 
@@ -133,45 +133,43 @@ html
         div
           div(style="width: 40%; float: right; display: inline-block; text-align: left;")
             | basic features:
-            ul.bullet
-              li get
-              li put
-              li del
-              li batch
-              li ordered iterator
+            ul
+              li(data-bespoke-bullet) get
+              li(data-bespoke-bullet) put
+              li(data-bespoke-bullet) del
+              li(data-bespoke-bullet) batch
+              li(data-bespoke-bullet) ordered iterator
           div(style="width: 50%; display: inline-block; float: left;")
             img(src="/images/example_leveldb.png")
 
       section
         h2 LevelUp
         pre
-          code.language-javascript.
+          code(data-bespoke-autorun).language-javascript.
             var db = level('your_database')
             db.put('a', 'b', function() {
               db.put('b', 'c', function() {
                 db.get('a', function(err, data) {
                   alert(JSON.stringify(data))
-                  db.close();
                 })
               })
             })
-        a(data-bespoke-run) Run!
 
       section
         h2 ReadStream
         pre
-          code.language-javascript.
+          code(data-bespoke-autorun).language-javascript.
             var db = level('your_database')
             var stream = db.createReadStream({
               start: 'a',
               end: 'd'
             })
-
             stream.on('data', function(data) {
               alert(JSON.stringify(data))
             })
-            stream.on('end', db.close.bind(db))
-        a(data-bespoke-run) Run!
+            stream.on('end', function() {
+              alert('end!')
+            })
 
       section
         h3 LevelUp's Ecosystem
@@ -292,19 +290,19 @@ html
           div(style="width: 50%; text-align: left; float: right; display: inline-block;")
             | We store 6 keys for each triple:
             ul.bullet
-              li spo::A::C::B
-              li sop::A::B::C
-              li ops::B::C::A
-              li osp::B::A::C
-              li pso::C::A::B
-              li pos::C::B::A
+              li(data-bespoke-bullet) spo::A::C::B
+              li(data-bespoke-bullet) sop::A::B::C
+              li(data-bespoke-bullet) ops::B::C::A
+              li(data-bespoke-bullet) osp::B::A::C
+              li(data-bespoke-bullet) pso::C::A::B
+              li(data-bespoke-bullet) pos::C::B::A
           div(style="width: 60%; display: inline-block; float: left; margin-left: -10%;")
             img(src="/images/basic_graph.png")
 
       section
         h2 Put a Triple in LevelDB
         pre
-          code.language-javascript.
+          code(data-bespoke-autorun).language-javascript.
             var db = level('your_database')
             var triple = JSON.stringify({
               subject: 'A', predicate: 'C', object: 'B'
@@ -316,16 +314,15 @@ html
               { key: 'osp::B::A::C', value: triple, type: 'put' },
               { key: 'pso::C::A::B', value: triple, type: 'put' },
               { key: 'pos::C::B::A', value: triple, type: 'put' }
-            ], db.close.bind(db))
+            ], alert.bind(null, 'Batch completed!'))
 
-        a(data-bespoke-run) Run!
 
       section
         h2 Ask a Triple to LevelDB
         p
           em all nodes that are connected by "C"
         pre
-          code.language-javascript.
+          code(data-bespoke-autorun).language-javascript.
             var db = level('your_database')
             var stream = db.createReadStream({
               start: 'pso::C::',
@@ -335,10 +332,6 @@ html
             stream.on('data', function(data) {
               alert(data.value)
             })
-
-            stream.on('end', db.close.bind(db))
-
-        a(data-bespoke-run) Run!
 
       section.full-imgs
         h2 LevelGraph
@@ -350,52 +343,49 @@ html
       section
         h2 LevelGraph
         ul
-          li is an Hexastore built on LevelDB and LevelUp
-          li v0.1.0 was built on the night between the 25th and 26th of April 2013
-          li v0.8.0 was released this Christmas
-          li 250+ commits and counting
-          li works on Node and in the Browser
-          li small in size (&lt; 1000 own lines of code)
-          li big on dependencies (~ 11000 lines of code)
-          li available on npm, bower or straight from github
+          li(data-bespoke-bullet) is an Hexastore built on LevelDB and LevelUp
+          li(data-bespoke-bullet) v0.1.0 was built on the night between the 25th and 26th of April 2013
+          li(data-bespoke-bullet) v0.8.0 was released this Christmas
+          li(data-bespoke-bullet) 250+ commits and counting
+          li(data-bespoke-bullet) works on Node and in the Browser
+          li(data-bespoke-bullet) small in size (&lt; 1000 own lines of code)
+          li(data-bespoke-bullet) big on dependencies (~ 11000 lines of code)
+          li(data-bespoke-bullet) available on npm, bower or straight from github
 
       section
         h2 Put Triples in LevelGraph
         pre
-          code.language-javascript.
+          code(data-bespoke-autorun).language-javascript.
             var graph = levelgraph('your_graph')
+
             var triples = [{
               subject: 'A', predicate: 'C', object: 'B'
             }, {
               subject: 'D', predicate: 'C', object: 'E'
             }]
+
             graph.put(triples, function(err) {
               alert(err || "Successful!")
-              graph.close()
             })
 
-        a(data-bespoke-run) Run!
 
       section
         h2 Ask Triples to LevelGraph
         p
           em all nodes that are connected by "C"
         pre
-          code.language-javascript.
+          code(data-bespoke-autorun).language-javascript.
             var graph = levelgraph('your_graph')
             var query = { predicate: 'C' }
 
             graph.get(query, function(err, triples) {
               alert(JSON.stringify(triples))
-              graph.close();
             })
-
-        a(data-bespoke-run) Run!
 
       section
         h2 Deleting Triples in LevelGraph
         pre
-          code.language-javascript.
+          code(data-bespoke-autorun).language-javascript.
             var graph = levelgraph('your_graph')
             var triples = [
               { subject: 'A', predicate: 'C', object: 'B' },
@@ -404,16 +394,14 @@ html
             graph.del(triples, function(err) {
               graph.get({ predicate: 'C' }, function(err, triples) {
                 alert('LG found ' + triples.length + ' triples')
-                graph.close()
               })
             })
 
-        a(data-bespoke-run) Run!
 
       section
         h2 Stream Triples in LevelGraph
         pre
-          code.language-javascript.
+          code(data-bespoke-autorun).language-javascript.
             var graph = levelgraph('your_graph')
             var stream = graph.putStream()
 
@@ -428,25 +416,24 @@ html
             })
             stream.end(null, alert.bind(null, 'Successful!'))
 
-        a(data-bespoke-run) Run!
 
       section
         h2 Stream Triples out of LevelGraph
         p
           em all people that likes beer
         pre
-          code.language-javascript.
+          code(data-bespoke-autorun).language-javascript.
             var graph = levelgraph('your_graph')
+
             var stream = graph.getStream({
               predicate: 'likes',
               object: 'beer'
             })
+
             stream.on('data', function(triple) {
               alert(JSON.stringify(triple))
             })
-            stream.on('end', graph.close.bind(graph))
 
-        a(data-bespoke-run) Run!
 
       section
         h2 Is it all?
@@ -460,7 +447,7 @@ html
           em All my friends that like beer and live in Brescia
 
         pre
-          code.language-javascript.
+          code(data-bespoke-autorun).language-javascript.
             var graph = levelgraph('your_graph')
             var x = graph.v('x')
             graph.search([
@@ -469,10 +456,8 @@ html
               { subject: x, predicate: 'lives', object: 'brescia' }
             ], function(err, solutions) {
               alert(JSON.stringify(solutions))
-              graph.close()
             })
 
-        a(data-bespoke-run) Run!
 
       section
         h2 Searches
@@ -480,7 +465,7 @@ html
           em All my friends that like beer and live in Brescia, with Streams
 
         pre
-          code.language-javascript.
+          code(data-bespoke-autorun).language-javascript.
             var graph = levelgraph('your_graph')
             var x = graph.v('x')
             var stream = graph.searchStream([
@@ -488,12 +473,10 @@ html
               { subject: x, predicate: 'likes', object: 'beer' },
               { subject: x, predicate: 'lives', object: 'brescia' }
             ]);
+
             stream.on('data', function(triple) {
               alert(JSON.stringify(triple))
             })
-            stream.on('end', graph.close.bind(graph))
-
-        a(data-bespoke-run) Run!
 
 
       section
@@ -551,7 +534,7 @@ html
         h2 Our Dataset
         br
         pre
-          code#dataset.language-javascript.
+          code(data-bespoke-autorun)#dataset.language-javascript.
             @prefix c: &lt;http://example.org/cartoons#&gt;.
             c:Tom   a c:Cat.
             c:Jerry a c:Mouse;
@@ -565,7 +548,7 @@ html
         h2 Importing a Dataset
 
         pre
-          code.language-javascript.
+          code(data-bespoke-autorun).language-javascript.
             var graph = n3(levelgraph("n3"));
             var dataset = document.querySelector("#dataset");
 
@@ -573,13 +556,11 @@ html
               alert("import completed!")
 
               var stream = graph.getStream({})
+
               stream.on('data', function(triple) {
                 alert(JSON.stringify(triple))
               })
-              stream.on('end', graph.close.bind(graph))
             });
-
-        a(data-bespoke-run) Run!
 
       section
         h2 Importing a Dataset with Streams
@@ -594,7 +575,6 @@ html
 
             stream.on("finish", function() {
               console.log("Import completed");
-              graph.close();
             });
 
       section.full-imgs
@@ -608,6 +588,21 @@ html
         img(src='images/me.png')
         h3
           a(href='http://github.com/mcollina') http://github.com/mcollina
+
+      section
+        h2 Un corso node.js: Node.js Basics
+        h3 Scrivi applicazioni modulari con Node.js
+
+        a(href="http://www.insana-academy.com/node-js-basics/") http://www.insana-academy.com/node-js-basics/
+
+        ul
+          li Events, Streams, Buffer, HTTP, Ereditarietà
+          li Testing con Mocha, Chai e Sinon
+          li Express
+          li WebSocket
+          li Grunt
+          li MongoDB and Mongoose
+          li ... lots of fun! :)
 
       section
         h3 My Book: JavaScript Best Practices
