@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width" />
+    <title>bespoke-run demo</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+
+    <h1>bespoke-run</h1>
+
+    <article>
+      <section>
+        <p>Slide 1</p>
+        <pre>
+          <code>
+            alert(2 + 2);
+          </code>
+        </pre>
+        <a data-bespoke-run>Run!</a>
+      </section>
+      <section>
+        <p>Slide 2</p>
+        <pre>
+          <code data-bespoke-autorun>
+            alert(2 + 2);
+          </code>
+        </pre>
+      </section>
+      <section>
+        <p>Slide 3</p>
+      </section>
+      <section>
+        <p>Slide 4</p>
+      </section>
+      <section>
+        <p>Slide 5</p>
+      </section>
+    </article>
+
+    <script src="../node_modules/bespoke/dist/bespoke.js"></script>
+    <script src="../node_modules/bespoke-keys/src/bespoke-keys.js"></script>
+    <script src="../node_modules/bespoke-touch/dist/bespoke-touch.js"></script>
+    <script src="../src/bower_components/jquery/jquery.js"></script>
+    <script src="../src/bespoke-run.js"></script>
+    <script src="demo.js"></script>
+  </body>
+</html>

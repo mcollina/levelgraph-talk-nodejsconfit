@@ -1,79 +1,595 @@
 <!DOCTYPE html>
 <html>
-
   <head>
-    <meta charset='utf-8' />
-    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
-    <meta name="description" content="Levelgraph-talk-nodejsconfit : My Talk at nodejsconf.it 2014! &quot;How to Cook a Graph Database in a Night&quot;" />
-
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
-    <title>Levelgraph-talk-nodejsconfit</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>How to Cook a Graph Database in a Night</title>
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+    <link rel="apple-touch-icon" type="image/png" href="/images/default-apple-touch-icon.png">
+    <!-- build:css styles/styles.css-->
+    <link rel="stylesheet" type="text/css" href="bower_components/prism/themes/prism-tomorrow.css">
+    <link rel="stylesheet" type="text/css" href="bower_components/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/main.css">
+    <!-- endbuild-->
   </head>
-
   <body>
-
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/mcollina/levelgraph-talk-nodejsconfit">View on GitHub</a>
-
-          <h1 id="project_title">Levelgraph-talk-nodejsconfit</h1>
-          <h2 id="project_tagline">My Talk at nodejsconf.it 2014! &quot;How to Cook a Graph Database in a Night&quot;</h2>
-
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/mcollina/levelgraph-talk-nodejsconfit/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/mcollina/levelgraph-talk-nodejsconfit/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
-
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <h3>
-<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to GitHub Pages.</h3>
-
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here using GitHub Flavored Markdown, select a template crafted by a designer, and publish. After your page is generated, you can check out the new branch:</p>
-
-<pre><code>$ cd your_repo_root/repo_name
-$ git fetch origin
-$ git checkout gh-pages
-</code></pre>
-
-<p>If you're using the GitHub for Mac, simply sync your repository and you'll see the new branch.</p>
-
-<h3>
-<a name="designer-templates" class="anchor" href="#designer-templates"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
-
-<p>We've crafted some handsome templates for you to use. Go ahead and continue to layouts to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved if it remained markdown format.</p>
-
-<h3>
-<a name="rather-drive-stick" class="anchor" href="#rather-drive-stick"><span class="octicon octicon-link"></span></a>Rather Drive Stick?</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator written by our own Tom Preston-Werner. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>
-<a name="authors-and-contributors" class="anchor" href="#authors-and-contributors"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor's GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>
-<a name="support-or-contact" class="anchor" href="#support-or-contact"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out the documentation at <a href="http://help.github.com/pages">http://help.github.com/pages</a> or contact <a href="mailto:support@github.com">support@github.com</a> and we’ll help you sort it out.</p>
+    <article>
+      <section>
+        <h1>How to Cook a Graph Database in a Night</h1>
+        <h3><a href="http://twitter.com/matteocollina">@matteocollina</a></h3>
       </section>
-    </div>
+      <section>
+        <h2>What is a Graph Database?</h2>
+      </section>
+      <section>
+        <h3 style="text-align: left; width: 500px"><i style="float: left; padding-right: 20px" class="fa fa-quote-left fa-2x"></i>a graph database is any storage system that provides index-free adjacency<br></h3>
+        <h3><em>Anonymous Wikipedian</em></h3>
+      </section>
+      <section class="full-imgs">
+        <h2>Models and Relationships</h2><br><br><br>
+        <table>
+          <thead>
+            <tr>
+              <th>Model</th>
+              <th>Example</th>
+              <th>Fast for Relationships</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Documental</td>
+              <td>MongoDB</td>
+              <td style="background-color: red"></td>
+            </tr>
+            <tr>
+              <td>Relational</td>
+              <td>MySQL</td>
+              <td style="background-color: yellow"></td>
+            </tr>
+            <tr>
+              <td>Graph</td>
+              <td>OrientDB</td>
+              <td style="background-color: green"></td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- A graph database is <em>fast</em> at traversing relations.-->
+      </section>
+      <section class="full-imgs">
+        <h2>The smallest possible graph</h2><br><br>
+        <div>
+          <div style="width: 40%; float: right; display: inline-block;">
+            <ul class="bullet">
+              <li data-bespoke-bullet>"A" is called <em>subject</em></li>
+              <li data-bespoke-bullet>"B" is called <em>object</em></li>
+              <li data-bespoke-bullet>"A" and "B" are also called <em>vertexes</em></li>
+              <li data-bespoke-bullet>"C" is called <em>predicate</em></li>
+              <li data-bespoke-bullet>"C" is also called <em>arc</em></li>
+            </ul>
+          </div>
+          <div style="width: 70%; display: inline-block; float: left; margin-left: -10%;"><img src="/images/basic_graph.png"></div>
+        </div>
+      </section>
+      <section class="full-imgs">
+        <h2>Query Examples</h2><br><br>
+        <div>
+          <div style="width: 40%; float: right; display: inline-block;">
+            <ul class="bullet">
+              <li data-bespoke-bullet>Give me all the vertex that go from "A"</li>
+              <li data-bespoke-bullet>Give me all the pairs connected by "C"</li>
+              <li data-bespoke-bullet>Give me all the vertex that go to "B"</li>
+              <li data-bespoke-bullet>Give me all the vertex that go to "B" <em>through "C"</em></li>
+              <li data-bespoke-bullet>...</li>
+            </ul>
+          </div>
+          <div style="width: 70%; display: inline-block; float: left; margin-left: -10%;"><img src="/images/basic_graph.png"></div>
+        </div>
+      </section>
+      <section class="full-imgs">
+        <h2>Hexastore: the fastest data structure for a Graph</h2><img src="/images/hexastore.png">
+        <div class="copyright"><a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.140.8776&amp;rep=rep1&amp;type=pdf">Weiss et al.,<em>"Hexastore: Sextuple Indexing for Semantic Web Data Management"</em></a></div>
+      </section>
+      <section data-bespoke-state="cooking">
+        <h2>My Secret Ingredient for a Graph Database</h2>
+        <div class="copyright"><a href="http://500px.com/photo/52159764" style="color: white">http://500px.com/photo/52159764 &nbsp;</a><a href="http://creativecommons.org/licenses/by/3.0/deed.en_US"><img src="/images/cc_attribution.png"></a></div>
+      </section>
+      <section data-bespoke-state="cooking">
+        <h2>LevelUp!</h2><br>
+        <h3 class="bullet"><a href="http://github.com/rvagg/node-levelup" style="color: white">http://github.com/rvagg/node-levelup</a></h3>
+        <h3 class="bullet"><em>The&nbsp;</em><a href="http://leveldb.googlecode.com">LevelDB&nbsp;</a>library for Node.js</h3>
+        <h3 class="bullet"><a href="http://leveldb.googlecode.com">LevelDB&nbsp;</a>is an&nbsp;<em>ordered&nbsp;</em>key-value store that can be embedded in ANY app</h3>
+        <div class="copyright"><a href="http://500px.com/photo/52159764" style="color: white">http://500px.com/photo/52159764 &nbsp;</a><a href="http://creativecommons.org/licenses/by/3.0/deed.en_US"><img src="/images/cc_attribution.png"></a></div>
+      </section>
+      <section class="full-imgs">
+        <h2>LevelDB</h2><br><br>
+        <div>
+          <div style="width: 40%; float: right; display: inline-block; text-align: left;">basic features:
+            <ul>
+              <li data-bespoke-bullet>get</li>
+              <li data-bespoke-bullet>put</li>
+              <li data-bespoke-bullet>del</li>
+              <li data-bespoke-bullet>batch</li>
+              <li data-bespoke-bullet>ordered iterator</li>
+            </ul>
+          </div>
+          <div style="width: 50%; display: inline-block; float: left;"><img src="/images/example_leveldb.png"></div>
+        </div>
+      </section>
+      <section>
+        <h2>LevelUp</h2>
+        <pre><code data-bespoke-autorun class="language-javascript">var db = level('your_database')
+db.put('a', 'b', function() {
+  db.put('b', 'c', function() {
+    db.get('a', function(err, data) {
+      alert(JSON.stringify(data))
+    })
+  })
+})
+</code></pre>
+      </section>
+      <section>
+        <h2>ReadStream</h2>
+        <pre><code data-bespoke-autorun class="language-javascript">var db = level('your_database')
+var stream = db.createReadStream({
+  start: 'a',
+  end: 'd'
+})
+stream.on('data', function(data) {
+  alert(JSON.stringify(data))
+})
+stream.on('end', function() {
+  alert('end!')
+})
+</code></pre>
+      </section>
+      <section>
+        <h3>LevelUp's Ecosystem</h3>
+        <table class="ecosystem">
+          <tr class="tools">
+            <td class="section"><span>Tools</span></td>
+            <td>
+              <table>
+                <tr>
+                  <td>lev</td>
+                  <td>levelweb</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr class="packages">
+            <td class="section"><span>Packages</span></td>
+            <td>
+              <table>
+                <tr>
+                  <td>tacodb</td>
+                  <td>couchup</td>
+                  <td>LevelGraph</td>
+                  <td>firedup</td>
+                  <td>level-assoc</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>level-static</td>
+                  <td>level-store</td>
+                  <td>level-session</td>
+                  <td>level-fs</td>
+                  <td>LevelTTLCache</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr class="extensions">
+            <td class="section"><span>Extensions</span></td>
+            <td>
+              <table>
+                <tr>
+                  <td>level-live-stream</td>
+                  <td>map-reduce</td>
+                  <td>level-queryengine</td>
+                  <td>Level-Multiply</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+                <tr>
+                  <td>multilevel</td>
+                  <td>level-replicate</td>
+                  <td>level-master</td>
+                  <td>Level TTL</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr class="pluggability">
+            <td class="section"><span>Extensibility</span></td>
+            <td>
+              <table>
+                <tr>
+                  <td>sublevel</td>
+                  <td>level-hooks</td>
+                  <td>level-mutex</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr class="core">
+            <td class="section"><span>Core</span></td>
+            <td colspan="10">
+              <table>
+                <tr>
+                  <td>LevelUP</td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+          <tr class="storage">
+            <td class="section"><span>Storage</span></td>
+            <td colspan="10">
+              <table>
+                <tr>
+                  <td class="rotate"><span><b>LevelDOWN</b></span></td>
+                  <td class="rotate"><span>LevelDOWN (Hyper)</span></td>
+                  <td class="rotate"><span>LevelDOWN (Basho)</span></td>
+                  <td class="rotate"><span>LevelDOWN (RocksDB)</span></td>
+                  <td class="rotate"><span>MemDOWN</span></td>
+                  <td class="rotate"><span>level.js</span></td>
+                  <td class="rotate"><span>leveldown-gap</span></td>
+                  <td class="rotate"><span>LMDB</span></td>
+                  <td class="rotate"><span>mysqlDOWN</span></td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </section>
+      <section class="committers">
+        <h2>LevelUp's Committers</h2><table><tbody>
+<tr><th align="left">Rod Vagg</th><td><a href="https://github.com/rvagg">GitHub/rvagg</a></td><td><a href="http://twitter.com/rvagg">Twitter/@rvagg</a></td></tr>
+<tr><th align="left">John Chesley</th><td><a href="https://github.com/chesles/">GitHub/chesles</a></td><td><a href="http://twitter.com/chesles">Twitter/@chesles</a></td></tr>
+<tr><th align="left">Jake Verbaten</th><td><a href="https://github.com/raynos">GitHub/raynos</a></td><td><a href="http://twitter.com/raynos2">Twitter/@raynos2</a></td></tr>
+<tr><th align="left">Dominic Tarr</th><td><a href="https://github.com/dominictarr">GitHub/dominictarr</a></td><td><a href="http://twitter.com/dominictarr">Twitter/@dominictarr</a></td></tr>
+<tr><th align="left">Max Ogden</th><td><a href="https://github.com/maxogden">GitHub/maxogden</a></td><td><a href="http://twitter.com/maxogden">Twitter/@maxogden</a></td></tr>
+<tr><th align="left">Lars-Magnus Skog</th><td><a href="https://github.com/ralphtheninja">GitHub/ralphtheninja</a></td><td><a href="http://twitter.com/ralphtheninja">Twitter/@ralphtheninja</a></td></tr>
+<tr><th align="left">David Björklund</th><td><a href="https://github.com/kesla">GitHub/kesla</a></td><td><a href="http://twitter.com/david_bjorklund">Twitter/@david_bjorklund</a></td></tr>
+<tr><th align="left">Julian Gruber</th><td><a href="https://github.com/juliangruber">GitHub/juliangruber</a></td><td><a href="http://twitter.com/juliangruber">Twitter/@juliangruber</a></td></tr>
+<tr><th align="left">Paolo Fragomeni</th><td><a href="https://github.com/hij1nx">GitHub/hij1nx</a></td><td><a href="http://twitter.com/hij1nx">Twitter/@hij1nx</a></td></tr>
+<tr><th align="left">Anton Whalley</th><td><a href="https://github.com/No9">GitHub/No9</a></td><td><a href="https://twitter.com/antonwhalley">Twitter/@antonwhalley</a></td></tr>
+<tr><th align="left">Matteo Collina</th><td><a href="https://github.com/mcollina">GitHub/mcollina</a></td><td><a href="https://twitter.com/matteocollina">Twitter/@matteocollina</a></td></tr>
+<tr><th align="left">Pedro Teixeira</th><td><a href="https://github.com/pgte">GitHub/pgte</a></td><td><a href="https://twitter.com/pgte">Twitter/@pgte</a></td></tr>
+<tr><th align="left">James Halliday</th><td><a href="https://github.com/substack">GitHub/substack</a></td><td><a href="https://twitter.com/substack">Twitter/@substack</a></td></tr>
+</tbody></table>
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Levelgraph-talk-nodejsconfit maintained by <a href="https://github.com/mcollina">mcollina</a></p>
-        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
-      </footer>
-    </div>
+      </section>
+      <section>
+        <h2>How to use LevelUp to build a Graph Database</h2>
+        <h1><i class="fa fa-question-circle fa-2x"></i></h1>
+        <h3>Let's build an Hexastore!</h3>
+      </section>
+      <section class="full-imgs">
+        <h2>Hexastore</h2><br><br>
+        <div>
+          <div style="width: 50%; text-align: left; float: right; display: inline-block;">We store 6 keys for each triple:
+            <ul class="bullet">
+              <li data-bespoke-bullet>spo::A::C::B</li>
+              <li data-bespoke-bullet>sop::A::B::C</li>
+              <li data-bespoke-bullet>ops::B::C::A</li>
+              <li data-bespoke-bullet>osp::B::A::C</li>
+              <li data-bespoke-bullet>pso::C::A::B</li>
+              <li data-bespoke-bullet>pos::C::B::A</li>
+            </ul>
+          </div>
+          <div style="width: 60%; display: inline-block; float: left; margin-left: -10%;"><img src="/images/basic_graph.png"></div>
+        </div>
+      </section>
+      <section>
+        <h2>Put a Triple in LevelDB</h2>
+        <pre><code data-bespoke-autorun class="language-javascript">var db = level('your_database')
+var triple = JSON.stringify({
+  subject: 'A', predicate: 'C', object: 'B'
+})
+db.batch([
+  { key: 'spo::A::C::B', value: triple, type: 'put' },
+  { key: 'sop::A::B::C', value: triple, type: 'put' },
+  { key: 'ops::B::C::A', value: triple, type: 'put' },
+  { key: 'osp::B::A::C', value: triple, type: 'put' },
+  { key: 'pso::C::A::B', value: triple, type: 'put' },
+  { key: 'pos::C::B::A', value: triple, type: 'put' }
+], alert.bind(null, 'Batch completed!'))
 
-    
+</code></pre>
+      </section>
+      <section>
+        <h2>Ask a Triple to LevelDB</h2>
+        <p><em>all nodes that are connected by "C"</em></p>
+        <pre><code data-bespoke-autorun class="language-javascript">var db = level('your_database')
+var stream = db.createReadStream({
+  start: 'pso::C::',
+  end:   'pso::C::\xff'
+})
 
+stream.on('data', function(data) {
+  alert(data.value)
+})
+</code></pre>
+      </section>
+      <section class="full-imgs">
+        <h2>LevelGraph</h2>
+        <div><img src="/images/logo.png"></div>
+        <h3><a href="http://github.com/mcollina/levelgraph">http://github.com/mcollina/levelgraph</a></h3>
+      </section>
+      <section>
+        <h2>LevelGraph</h2>
+        <ul>
+          <li data-bespoke-bullet>is an Hexastore built on LevelDB and LevelUp</li>
+          <li data-bespoke-bullet>v0.1.0 was built on the night between the 25th and 26th of April 2013</li>
+          <li data-bespoke-bullet>v0.8.0 was released this Christmas</li>
+          <li data-bespoke-bullet>250+ commits and counting</li>
+          <li data-bespoke-bullet>works on Node and in the Browser</li>
+          <li data-bespoke-bullet>small in size (&lt; 1000 own lines of code)</li>
+          <li data-bespoke-bullet>big on dependencies (~ 11000 lines of code)</li>
+          <li data-bespoke-bullet>available on npm, bower or straight from github</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Put Triples in LevelGraph</h2>
+        <pre><code data-bespoke-autorun class="language-javascript">var graph = levelgraph('your_graph')
+
+var triples = [{
+  subject: 'A', predicate: 'C', object: 'B'
+}, {
+  subject: 'D', predicate: 'C', object: 'E'
+}]
+
+graph.put(triples, function(err) {
+  alert(err || "Successful!")
+})
+
+</code></pre>
+      </section>
+      <section>
+        <h2>Ask Triples to LevelGraph</h2>
+        <p><em>all nodes that are connected by "C"</em></p>
+        <pre><code data-bespoke-autorun class="language-javascript">var graph = levelgraph('your_graph')
+var query = { predicate: 'C' }
+
+graph.get(query, function(err, triples) {
+  alert(JSON.stringify(triples))
+})
+</code></pre>
+      </section>
+      <section>
+        <h2>Deleting Triples in LevelGraph</h2>
+        <pre><code data-bespoke-autorun class="language-javascript">var graph = levelgraph('your_graph')
+var triples = [
+  { subject: 'A', predicate: 'C', object: 'B' },
+  { subject: 'D', predicate: 'C', object: 'E' }
+]
+graph.del(triples, function(err) {
+  graph.get({ predicate: 'C' }, function(err, triples) {
+    alert('LG found ' + triples.length + ' triples')
+  })
+})
+
+</code></pre>
+      </section>
+      <section>
+        <h2>Stream Triples in LevelGraph</h2>
+        <pre><code data-bespoke-autorun class="language-javascript">var graph = levelgraph('your_graph')
+var stream = graph.putStream()
+
+stream.write({
+  subject: 'matteo', predicate: 'friend', object: 'lucio'
+})
+stream.write({
+  subject: 'lucio', predicate: 'likes', object: 'beer'
+})
+stream.write({
+  subject: 'lucio', predicate: 'lives', object: 'brescia'
+})
+stream.end(null, alert.bind(null, 'Successful!'))
+
+</code></pre>
+      </section>
+      <section>
+        <h2>Stream Triples out of LevelGraph</h2>
+        <p><em>all people that likes beer</em></p>
+        <pre><code data-bespoke-autorun class="language-javascript">var graph = levelgraph('your_graph')
+
+var stream = graph.getStream({
+  predicate: 'likes',
+  object: 'beer'
+})
+
+stream.on('data', function(triple) {
+  alert(JSON.stringify(triple))
+})
+
+</code></pre>
+      </section>
+      <section>
+        <h2>Is it all?</h2>
+        <h3>We did not build a graph &nbsp;<em>just &nbsp;</em>for this, right?</h3>
+      </section>
+      <section>
+        <h2>Searches</h2>
+        <p style="width: 100%"><em>All my friends that like beer and live in Brescia</em></p>
+        <pre><code data-bespoke-autorun class="language-javascript">var graph = levelgraph('your_graph')
+var x = graph.v('x')
+graph.search([
+  { subject: 'matteo', predicate: 'friend', object: x },
+  { subject: x, predicate: 'likes', object: 'beer' },
+  { subject: x, predicate: 'lives', object: 'brescia' }
+], function(err, solutions) {
+  alert(JSON.stringify(solutions))
+})
+
+</code></pre>
+      </section>
+      <section>
+        <h2>Searches</h2>
+        <p style="width: 100%"><em>All my friends that like beer and live in Brescia, with Streams</em></p>
+        <pre><code data-bespoke-autorun class="language-javascript">var graph = levelgraph('your_graph')
+var x = graph.v('x')
+var stream = graph.searchStream([
+  { subject: 'matteo', predicate: 'friend', object: x },
+  { subject: x, predicate: 'likes', object: 'beer' },
+  { subject: x, predicate: 'lives', object: 'brescia' }
+]);
+
+stream.on('data', function(triple) {
+  alert(JSON.stringify(triple))
+})
+
+</code></pre>
+      </section>
+      <section>
+        <h2>How fast is LevelGraph?</h2><i style="font-size: 500%" class="fa fa-rocket"></i>
+        <ul class="bullet">
+          <li><b>GET &nbsp;</b>Up to 50.000 triples per second</li>
+          <li><b>PUT &nbsp;</b>Up to 22.000 triples per second</li>
+          <li><b>SEARCH &nbsp;</b>Up to 20.000 triples per second for two conditions</li>
+        </ul>
+      </section>
+      <section>
+        <h2>..but I want to store JS Objects!</h2>
+      </section>
+      <section>
+        <h2>LevelGraph-JSONLD</h2>
+        <h3>an Object Document Mapper for LevelGraph</h3>
+        <pre><code class="language-javascript">var db = jsonld(levelgraph('jsonld'));
+db.jsonld.put({
+  "@context": {
+    "name": "http://xmlns.com/foaf/0.1/name",
+    "knows": "http://xmlns.com/foaf/0.1/knows" },
+  "@id": "http://matteocollina.com",
+  "name": "Matteo",
+  "knows": [ { "name": "Daniele" }
+             { "name": "Lucio"   } ]
+})
+</code></pre>
+      </section>
+      <section class="full-imgs">
+        <h2>Linked Open Data</h2>
+        <h3>What does that mean?</h3>
+      </section>
+      <section class="full-imgs">
+        <h2>Is your data accessible?</h2><img src="images/walledgarden.png">
+        <div class="copyright">
+          <p>David Simonds, The Economist</p>
+        </div>
+      </section>
+      <section class="full-imgs">
+        <h2>Linked Open Data Cloud</h2><img src="images/lod-cloud.png">
+        <div class="copyright">
+          <p>Linking Open Data cloud diagram, by Richard Cyganiak and Anja Jentzsch.&nbsp;<a href="http://lod-cloud.net/">http://lod-cloud.net/</a></p>
+        </div>
+      </section>
+      <section>
+        <h2>Our Dataset</h2><br>
+        <pre><code data-bespoke-autorun id="dataset" class="language-javascript">@prefix c: &lt;http://example.org/cartoons#&gt;.
+c:Tom   a c:Cat.
+c:Jerry a c:Mouse;
+        c:smarterThan c:Tom;
+        c:place "fantasy".
+        </code></pre><br>
+        <h3>That has id '#dataset'</h3>
+      </section>
+      <section>
+        <h2>Importing a Dataset</h2>
+        <pre><code data-bespoke-autorun class="language-javascript">var graph = n3(levelgraph("n3"));
+var dataset = document.querySelector("#dataset");
+
+graph.n3.put(dataset.innerText, function() {
+  alert("import completed!")
+  
+  var stream = graph.getStream({})
+  
+  stream.on('data', function(triple) {
+    alert(JSON.stringify(triple))
+  })
+});
+</code></pre>
+      </section>
+      <section>
+        <h2>Importing a Dataset with Streams</h2>
+        <pre><code class="language-javascript">var graph = n3(levelgraph('n3'));
+var fs = require("fs");
+
+var stream = fs.createReadStream("./triples.n3")
+               .pipe(graph.n3.putStream());
+               
+stream.on("finish", function() {
+  console.log("Import completed");
+});
+</code></pre>
+      </section>
+      <section class="full-imgs">
+        <h2>LevelGraph</h2>
+        <div><img src="/images/logo.png"></div>
+        <h3><a href="http://github.com/mcollina/levelgraph">http://github.com/mcollina/levelgraph</a></h3>
+      </section>
+      <section class="full-imgs"><img src="images/me.png">
+        <h3><a href="http://github.com/mcollina">http://github.com/mcollina</a></h3>
+      </section>
+      <section>
+        <h2>Yet Another Node.js Course</h2>
+        <h3>Node.js Basics</h3><a href="http://www.insana-academy.com/node-js-basics/">http://www.insana-academy.com/node-js-basics/</a>
+        <ul>
+          <li>Events, Streams, Buffer, HTTP, Ereditarietà</li>
+          <li>Testing con Mocha, Chai e Sinon</li>
+          <li>Express</li>
+          <li>WebSocket</li>
+          <li>Grunt</li>
+          <li>MongoDB and Mongoose</li>
+          <li>... lots of fun in Italian! :)</li>
+        </ul>
+      </section>
+      <section>
+        <h3>My Book: JavaScript Best Practices</h3><a href="http://www.jsbestpractices.it"><img src="images/jsbestpractices.jpg" style="width: 250px"></a>
+      </section>
+      <section>
+        <h1>Thanks!</h1><br>
+        <p>If you need help with node.js:</p><br>
+        <h3><a href="mailto:hello@matteocollina.com">hello@matteocollina.com</a></h3>
+        <h3><a href="http://twitter.com/matteocollina">@matteocollina</a> on Twitter</h3>
+        <h3><a href="http://www.matteocollina.com">www.matteocollina.com</a></h3>
+      </section>
+    </article>
+    <!-- build:js scripts/scripts.js-->
+    <script src="bower_components/bespoke.js/dist/bespoke.min.js"></script>
+    <script src="bower_components/bespoke-keys/dist/bespoke-keys.min.js"></script>
+    <script src="bower_components/bespoke-touch/dist/bespoke-touch.min.js"></script>
+    <script src="bower_components/bespoke-bullets/dist/bespoke-bullets.min.js"></script>
+    <script src="bower_components/bespoke-scale/dist/bespoke-scale.min.js"></script>
+    <script src="bower_components/bespoke-hash/dist/bespoke-hash.min.js"></script>
+    <script src="bower_components/bespoke-progress/dist/bespoke-progress.min.js"></script>
+    <script src="bower_components/bespoke-state/dist/bespoke-state.min.js"></script>
+    <script src="bower_components/bespoke-forms/dist/bespoke-forms.min.js"></script>
+    <script src="bower_components/bespoke-run/dist/bespoke-run.js"></script>
+    <script src="bower_components/prism/prism.js"></script>
+    <script src="scripts/bundle.js"></script>
+    <script src="scripts/main.js"></script>
+    <!-- endbuild-->
+    <!--script.-->
+    <!--  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){-->
+    <!--  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),-->
+    <!--  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)-->
+    <!--  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');-->
+    <!--  ga('create', 'UA-47475655-1', 'levelgraph.io');-->
+    <!--  ga('send', 'pageview');-->
   </body>
 </html>
