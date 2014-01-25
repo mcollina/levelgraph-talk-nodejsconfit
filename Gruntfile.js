@@ -42,7 +42,10 @@ module.exports = function(grunt) {
           src: [
             '**/*',
             '!<%= jade.src.files[0].src %>',
-            '!<%= stylus.src.files[0].src %>'
+            '!<%= stylus.src.files[0].src %>',
+            '!**/*.scss',
+            '!**/*.less',
+            '!**/bower_components/**/*.html'
           ],
           dest: 'public/'
         }]
