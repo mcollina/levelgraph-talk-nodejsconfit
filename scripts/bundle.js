@@ -15604,9 +15604,7 @@ module.exports = {
   , NotFoundError       : NotFoundError
   , EncodingError       : createError('EncodingError', LevelUPError)
 }
-},{"errno":114}],"levelup":[function(require,module,exports){
-module.exports=require('AH9p1J');
-},{}],"AH9p1J":[function(require,module,exports){
+},{"errno":114}],"AH9p1J":[function(require,module,exports){
 var process=require("__browserify_process");/* Copyright (c) 2012-2013 LevelUP contributors
  * See list at <https://github.com/rvagg/node-levelup#contributing>
  * MIT +no-false-attribs License
@@ -16043,7 +16041,9 @@ module.exports.destroy = utilStatic('destroy')
 // DEPRECATED: prefer accessing LevelDOWN for this: require('leveldown').repair()
 module.exports.repair  = utilStatic('repair')
 
-},{"./batch":75,"./errors":76,"./read-stream":79,"./util":80,"./write-stream":81,"__browserify_process":6,"deferred-leveldown":96,"events":3,"prr":115,"util":19,"xtend":123}],79:[function(require,module,exports){
+},{"./batch":75,"./errors":76,"./read-stream":79,"./util":80,"./write-stream":81,"__browserify_process":6,"deferred-leveldown":96,"events":3,"prr":115,"util":19,"xtend":123}],"levelup":[function(require,module,exports){
+module.exports=require('AH9p1J');
+},{}],79:[function(require,module,exports){
 /* Copyright (c) 2012-2013 LevelUP contributors
  * See list at <https://github.com/rvagg/node-levelup#contributing>
  * MIT +no-false-attribs License <https://github.com/rvagg/node-levelup/blob/master/LICENSE>
@@ -18355,8 +18355,6 @@ module.exports={
   "_from": "levelup@"
 }
 
-},{}],"memdown":[function(require,module,exports){
-module.exports=require('K9qIAB');
 },{}],"K9qIAB":[function(require,module,exports){
 var process=require("__browserify_process"),global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};var util              = require('util')
   , bops              = require('bops')
@@ -18530,7 +18528,9 @@ MemDOWN.prototype._isBuffer = function (obj) {
 
 module.exports = MemDOWN
 
-},{"__browserify_process":6,"abstract-leveldown":133,"bops":140,"util":19}],131:[function(require,module,exports){
+},{"__browserify_process":6,"abstract-leveldown":133,"bops":140,"util":19}],"memdown":[function(require,module,exports){
+module.exports=require('K9qIAB');
+},{}],131:[function(require,module,exports){
 module.exports=require(97)
 },{"__browserify_process":6}],132:[function(require,module,exports){
 module.exports=require(24)
