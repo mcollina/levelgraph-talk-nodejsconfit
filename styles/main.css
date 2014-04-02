@@ -238,6 +238,67 @@ li.bespoke-bullet-inactive {
 .cooking h3 {
   color: #fff;
 }
+.consultant {
+  background-image: url("/images/consultant.jpg");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+}
+.consultant .bespoke-slide {
+  background: rgba(0,0,0,0);
+  color: #fff;
+}
+.consultant h3 {
+  color: #fff;
+}
+.history {
+  background-image: url("/images/history.jpg");
+  -webkit-background-size: 100%;
+  -moz-background-size: 100%;
+  background-size: 100%;
+}
+.history .bespoke-slide {
+  background: none;
+}
+.history h3 {
+  position: absolute;
+  bottom: 100px;
+  left: 0px;
+  margin-left: -50px;
+  -webkit-transform: rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+  color: #fff;
+}
+.history .blackbg {
+  background: rgba(0,0,0,0.7);
+  color: #fff;
+}
+.tirant {
+  background-image: url("/images/tirant.jpg");
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+}
+.tirant .bespoke-slide {
+  background: none;
+}
+.tirant h3 {
+  position: absolute;
+  bottom: 10px;
+  left: 0px;
+  color: #fff;
+}
+.levelmeup .bespoke-slide {
+  background-image: url("/images/levelmeup.png");
+  -webkit-background-size: contain;
+  -moz-background-size: contain;
+  background-size: contain;
+  background-color: #000;
+  background-repeat: no-repeat;
+}
 pre {
   padding: 26px !important;
   -webkit-border-radius: 8px;
@@ -250,7 +311,7 @@ body {
   background-color: #000;
 }
 h1 {
-  font-size: 72px;
+  font-size: 42px;
   line-height: 82px;
   letter-spacing: -2px;
   margin-bottom: 16px;
