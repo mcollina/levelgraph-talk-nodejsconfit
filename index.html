@@ -3,70 +3,91 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>Build your own database with LevelDB and Node.js</title>
+    <title>How to Cook a Graph Database in a Night</title>
     <link rel="icon" type="image/png" href="/images/favicon.png">
     <link rel="apple-touch-icon" type="image/png" href="/images/default-apple-touch-icon.png">
     <link rel="stylesheet" href="styles/styles.css"/>
   </head>
   <body>
     <article>
-      <section><a href="https://github.com/mcollina/levelup-talk-cloudconf"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
-        <h1>Build your own database with LevelDB and Node.js</h1>
-        <h3><a href="http://twitter.com/matteocollina">@matteocollina</a></h3><img src="/images/logo.svg">
-      </section>
-      <section data-bespoke-state="consultant">
-        <h2>Any problems with your database?</h2>
-        <div class="copyright"><a href="http://500px.com/photo/22823315" style="color: white">http://500px.com/photo/22823315&nbsp;</a><a href="http://creativecommons.org/licenses/by/3.0/deed.en_US"><img src="/images/cc_attribution.png"></a></div>
-      </section>
-      <section data-bespoke-state="consultant">
-        <h2>Call your consultant!</h2>
-      </section>
-      <section data-bespoke-state="history">
-        <h3>This is not a database ;)</h3>
-      </section>
-      <section data-bespoke-state="history" class="blackbg">
-        <h2>History Pills</h2>
-        <ul>
-          <li data-bespoke-bullet>1960s: From tapes and batch to disks, shared access and interactivity</li>
-          <li data-bespoke-bullet>Late 1960s: Navigational Databases, links</li>
-          <li data-bespoke-bullet>Early 1970s: Relational Model</li>
-          <li data-bespoke-bullet>Late 1970s: SQL</li>
-          <li data-bespoke-bullet>Early 1980s: Desktop Databases</li>
-          <li data-bespoke-bullet>Late 1980s: Object Oriented Database</li>
-          <li data-bespoke-bullet>2000s: speed and scale, NoSQL</li>
-          <li data-bespoke-bullet>Early 2010s: never let a beautiful abstraction go to waste, NewSQL</li>
-        </ul>
-      </section>
-      <section data-bespoke-state="tirant">
-        <h3>The tiranny of beautiful abstractions</h3>
+      <section><a href="https://github.com/mcollina/levelgraph-talk-nodejsconfit"><img style="position: absolute; top: 0; right: 0; border: 0;" src="https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png"></a>
+        <h1>How to Cook a Graph Database in a Night</h1>
+        <h3><a href="http://twitter.com/matteocollina">@matteocollina</a></h3>
       </section>
       <section>
-        <h2>What is a database?</h2>
-        <h3>
-          A database is a tool for interacting with structured
-          data, externalized from the core of our application
-        </h3>
+        <h2>What is a Graph Database?</h2>
       </section>
       <section>
-        <h2>What we need from a database?</h2>
-        <ul>
-          <li data-bespoke-bullet>persistence</li>
-          <li data-bespoke-bullet>performance</li>
-          <li data-bespoke-bullet>simpliciy to access complex data</li>
-          <li data-bespoke-bullet><em>sometimes&nbsp;</em>shared access</li>
-          <li data-bespoke-bullet><em>sometimes&nbsp;</em>scalability</li>
-        </ul>
+        <h3 style="text-align: left; width: 500px"><i style="float: left; padding-right: 20px" class="fa fa-quote-left fa-2x"></i>a graph database is any storage system that provides index-free adjacency<br></h3>
+        <h3><em>Anonymous Wikipedian</em></h3>
+      </section>
+      <section class="full-imgs">
+        <h2>Models and Relationships</h2><br><br><br>
+        <table>
+          <thead>
+            <tr>
+              <th>Model</th>
+              <th>Example</th>
+              <th>Fast for Relationships</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Documental</td>
+              <td>MongoDB</td>
+              <td style="background-color: red"></td>
+            </tr>
+            <tr>
+              <td>Relational</td>
+              <td>MySQL</td>
+              <td style="background-color: yellow"></td>
+            </tr>
+            <tr>
+              <td>Graph</td>
+              <td>OrientDB</td>
+              <td style="background-color: green"></td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- A graph database is <em>fast</em> at traversing relations.-->
+      </section>
+      <section class="full-imgs">
+        <h2>The smallest possible graph</h2><br><br>
+        <div>
+          <div style="width: 40%; float: right; display: inline-block;">
+            <ul class="bullet">
+              <li data-bespoke-bullet>"A" is called <em>subject</em></li>
+              <li data-bespoke-bullet>"B" is called <em>object</em></li>
+              <li data-bespoke-bullet>"A" and "B" are also called <em>vertexes</em></li>
+              <li data-bespoke-bullet>"C" is called <em>predicate</em></li>
+              <li data-bespoke-bullet>"C" is also called <em>arc</em></li>
+            </ul>
+          </div>
+          <div style="width: 70%; display: inline-block; float: left; margin-left: -10%;"><img src="/images/basic_graph.png"></div>
+        </div>
+      </section>
+      <section class="full-imgs">
+        <h2>Query Examples</h2><br><br>
+        <div>
+          <div style="width: 40%; float: right; display: inline-block;">
+            <ul class="bullet">
+              <li data-bespoke-bullet>Give me all the vertex that go from "A"</li>
+              <li data-bespoke-bullet>Give me all the pairs connected by "C"</li>
+              <li data-bespoke-bullet>Give me all the vertex that go to "B"</li>
+              <li data-bespoke-bullet>Give me all the vertex that go to "B" <em>through "C"</em></li>
+              <li data-bespoke-bullet>...</li>
+            </ul>
+          </div>
+          <div style="width: 70%; display: inline-block; float: left; margin-left: -10%;"><img src="/images/basic_graph.png"></div>
+        </div>
+      </section>
+      <section class="full-imgs">
+        <h2>Hexastore: the fastest data structure for a Graph</h2><img src="/images/hexastore.png">
+        <div class="copyright"><a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.140.8776&amp;rep=rep1&amp;type=pdf">Weiss et al.,<em>"Hexastore: Sextuple Indexing for Semantic Web Data Management"</em></a></div>
       </section>
       <section data-bespoke-state="cooking">
-        <h2>My Secret Ingredients for a Database</h2>
+        <h2>My Secret Ingredient for a Graph Database</h2>
         <div class="copyright"><a href="http://500px.com/photo/52159764" style="color: white">http://500px.com/photo/52159764 &nbsp;</a><a href="http://creativecommons.org/licenses/by/3.0/deed.en_US"><img src="/images/cc_attribution.png"></a></div>
-      </section>
-      <section data-bespoke-state="cooking"><img src="/images/node.png"><br><img src="/images/npm.png">
-        <ul>
-          <li>Small core, vibrant community</li>
-          <li>Extreme modularity</li>
-          <li>Reimplement everything in Javascript</li>
-        </ul>
       </section>
       <section data-bespoke-state="cooking">
         <h2>LevelUp!</h2><br>
@@ -89,13 +110,6 @@
           </div>
           <div style="width: 50%; display: inline-block; float: left;"><img src="/images/example_leveldb.png"></div>
         </div>
-      </section>
-      <section>
-        <h2>LevelUp</h2>
-        <h3>
-          The Node.js binding for LevelDB,
-          let's build our database in Javascript!
-        </h3>
       </section>
       <section>
         <h2>LevelUp</h2>
@@ -238,15 +252,6 @@ stream.on('end', function() {
           </tr>
         </table>
       </section>
-      <section data-bespoke-state="levelmeup">
-        <h2>http://npm.im/levelmeup</h2>
-      </section>
-      <section class="full-imgs">
-        <h2>LevelUp's BDFL: @rvagg</h2><img src="/images/bdfl.png">
-      </section>
-      <section class="full-imgs">
-        <h2>LevelUp's Committers</h2><img src="/images/committers.png">
-      </section>
       <section class="committers">
         <h2>LevelUp's Committers</h2><table><tbody>
 <tr><th align="left">Rod Vagg</th><td><a href="https://github.com/rvagg">GitHub/rvagg</a></td><td><a href="http://twitter.com/rvagg">Twitter/@rvagg</a></td></tr>
@@ -264,81 +269,6 @@ stream.on('end', function() {
 <tr><th align="left">James Halliday</th><td><a href="https://github.com/substack">GitHub/substack</a></td><td><a href="https://twitter.com/substack">Twitter/@substack</a></td></tr>
 </tbody></table>
 
-      </section>
-      <section>
-        <h2>You can use LevelUp to build the database YOU want</h2>
-        <h3>I built a graph database!</h3>
-      </section>
-      <section>
-        <h2>What is a Graph Database?</h2>
-      </section>
-      <section>
-        <h3 style="text-align: left; width: 500px"><i style="float: left; padding-right: 20px" class="fa fa-quote-left fa-2x"></i>a graph database is any storage system that provides index-free adjacency<br></h3>
-        <h3><em>Anonymous Wikipedian</em></h3>
-      </section>
-      <section class="full-imgs">
-        <h2>Models and Relationships</h2><br><br><br>
-        <table>
-          <thead>
-            <tr>
-              <th>Model</th>
-              <th>Example</th>
-              <th>Fast for Relationships</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Documental</td>
-              <td>MongoDB</td>
-              <td style="background-color: red"></td>
-            </tr>
-            <tr>
-              <td>Relational</td>
-              <td>MySQL</td>
-              <td style="background-color: yellow"></td>
-            </tr>
-            <tr>
-              <td>Graph</td>
-              <td>OrientDB</td>
-              <td style="background-color: green"></td>
-            </tr>
-          </tbody>
-        </table>
-        <!-- A graph database is <em>fast</em> at traversing relations.-->
-      </section>
-      <section class="full-imgs">
-        <h2>The smallest possible graph</h2><br><br>
-        <div>
-          <div style="width: 40%; float: right; display: inline-block;">
-            <ul class="bullet">
-              <li data-bespoke-bullet>"A" is called <em>subject</em></li>
-              <li data-bespoke-bullet>"B" is called <em>object</em></li>
-              <li data-bespoke-bullet>"A" and "B" are also called <em>vertexes</em></li>
-              <li data-bespoke-bullet>"C" is called <em>predicate</em></li>
-              <li data-bespoke-bullet>"C" is also called <em>arc</em></li>
-            </ul>
-          </div>
-          <div style="width: 70%; display: inline-block; float: left; margin-left: -10%;"><img src="/images/basic_graph.png"></div>
-        </div>
-      </section>
-      <section class="full-imgs">
-        <h2>Query Examples</h2><br><br>
-        <div>
-          <div style="width: 40%; float: right; display: inline-block;">
-            <ul class="bullet">
-              <li data-bespoke-bullet>Give me all the vertex that go from "A"</li>
-              <li data-bespoke-bullet>Give me all the pairs connected by "C"</li>
-              <li data-bespoke-bullet>Give me all the vertex that go to "B"</li>
-              <li data-bespoke-bullet>Give me all the vertex that go to "B" <em>through "C"</em></li>
-              <li data-bespoke-bullet>...</li>
-            </ul>
-          </div>
-          <div style="width: 70%; display: inline-block; float: left; margin-left: -10%;"><img src="/images/basic_graph.png"></div>
-        </div>
-      </section>
-      <section class="full-imgs">
-        <h2>Hexastore: the fastest data structure for a Graph</h2><img src="/images/hexastore.png">
-        <div class="copyright"><a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.140.8776&amp;rep=rep1&amp;type=pdf">Weiss et al.,<em>"Hexastore: Sextuple Indexing for Semantic Web Data Management"</em></a></div>
       </section>
       <section>
         <h2>How to use LevelUp to build a Graph Database</h2>
@@ -546,6 +476,61 @@ db.jsonld.put({
   "knows": [ { "name": "Daniele" }
              { "name": "Lucio"   } ]
 })
+</code></pre>
+      </section>
+      <section class="full-imgs">
+        <h2>Linked Open Data</h2>
+        <h3>What does that mean?</h3>
+      </section>
+      <section class="full-imgs">
+        <h2>Is your data accessible?</h2><img src="images/walledgarden.png">
+        <div class="copyright">
+          <p>David Simonds, The Economist</p>
+        </div>
+      </section>
+      <section class="full-imgs">
+        <h2>Linked Open Data Cloud</h2><img src="images/lod-cloud.png">
+        <div class="copyright">
+          <p>Linking Open Data cloud diagram, by Richard Cyganiak and Anja Jentzsch.&nbsp;<a href="http://lod-cloud.net/">http://lod-cloud.net/</a></p>
+        </div>
+      </section>
+      <section>
+        <h2>Our Dataset</h2><br>
+        <pre><code data-bespoke-autorun id="dataset" class="language-javascript">@prefix c: &lt;http://example.org/cartoons#&gt;.
+c:Tom   a c:Cat.
+c:Jerry a c:Mouse;
+        c:smarterThan c:Tom;
+        c:place "fantasy".
+        </code></pre><br>
+        <h3>That has id '#dataset'</h3>
+      </section>
+      <section>
+        <h2>Importing a Dataset</h2>
+        <pre><code data-bespoke-autorun class="language-javascript">var graph = n3(levelgraph("n3"));
+var dataset = document.querySelector("#dataset");
+
+graph.n3.put(dataset.innerText, function() {
+  alert("import completed!")
+  
+  var stream = graph.getStream({})
+  
+  stream.on('data', function(triple) {
+    alert(JSON.stringify(triple))
+  })
+});
+</code></pre>
+      </section>
+      <section>
+        <h2>Importing a Dataset with Streams</h2>
+        <pre><code class="language-javascript">var graph = n3(levelgraph('n3'));
+var fs = require("fs");
+
+var stream = fs.createReadStream("./triples.n3")
+               .pipe(graph.n3.putStream());
+               
+stream.on("finish", function() {
+  console.log("Import completed");
+});
 </code></pre>
       </section>
       <section class="full-imgs">

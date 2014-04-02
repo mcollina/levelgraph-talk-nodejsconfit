@@ -5877,8 +5877,8 @@ function hasOwnProperty(obj, prop) {
 }
 
 },{"./support/isBuffer":18,"__browserify_process":6,"inherits":4}],"level-js":[function(require,module,exports){
-module.exports=require('ZAz//w');
-},{}],"ZAz//w":[function(require,module,exports){
+module.exports=require('nNCd8Y');
+},{}],"nNCd8Y":[function(require,module,exports){
 var Buffer=require("__browserify_Buffer");module.exports = Level
 
 var IDB = require('idb-wrapper')
@@ -7890,7 +7890,7 @@ function isBuffer (o) {
     || /\[object (.+Array|Array.+)\]/.test(Object.prototype.toString.call(o));
 }
 
-},{"buffer":7}],"R2lLaA":[function(require,module,exports){
+},{"buffer":7}],"XcTrbC":[function(require,module,exports){
 
 var n3 = require("n3")
   , concat = require("concat-stream");
@@ -7990,7 +7990,7 @@ function wrapCallback(method) {
 module.exports = levelgraphN3;
 
 },{"concat-stream":36,"n3":39}],"levelgraph-n3":[function(require,module,exports){
-module.exports=require('R2lLaA');
+module.exports=require('XcTrbC');
 },{}],36:[function(require,module,exports){
 var Buffer=require("__browserify_Buffer");var Writable = require('readable-stream').Writable
 var inherits = require('inherits')
@@ -12177,7 +12177,7 @@ module.exports = FilterStream;
 var Leveljs = require('level-js');
 module.exports = function(l) { return new Leveljs(l); };
 
-},{"level-js":"ZAz//w"}],57:[function(require,module,exports){
+},{"level-js":"nNCd8Y"}],57:[function(require,module,exports){
 
 var Transform = require('readable-stream').Transform
   , Variable = require('./variable')
@@ -12259,7 +12259,7 @@ JoinStream.prototype._transform = function transform(solution, encoding, done) {
 
 module.exports = JoinStream;
 
-},{"./utilities":64,"./variable":65,"readable-stream":74}],"HGceAa":[function(require,module,exports){
+},{"./utilities":64,"./variable":65,"readable-stream":74}],"J22x9n":[function(require,module,exports){
 var process=require("__browserify_process");
 var filterStream = require('./filterstream')
   , materializer = require('./materializerstream')
@@ -12467,8 +12467,8 @@ doActionStream = function(type, leveldb) {
   };
 };
 
-},{"./filterstream":55,"./getdb":56,"./materializerstream":60,"./navigator":61,"./queryplanner":62,"./utilities":64,"./variable":65,"./writestream":66,"__browserify_process":6,"level-writestream":2,"levelup":"Qh7AIe","readable-stream":74,"xtend":76}],"levelgraph":[function(require,module,exports){
-module.exports=require('HGceAa');
+},{"./filterstream":55,"./getdb":56,"./materializerstream":60,"./navigator":61,"./queryplanner":62,"./utilities":64,"./variable":65,"./writestream":66,"__browserify_process":6,"level-writestream":2,"levelup":"AH9p1J","readable-stream":74,"xtend":76}],"levelgraph":[function(require,module,exports){
+module.exports=require('J22x9n');
 },{}],60:[function(require,module,exports){
 
 var Transform = require('readable-stream').Transform
@@ -15964,7 +15964,7 @@ module.exports = {
   , NotFoundError       : NotFoundError
   , EncodingError       : createError('EncodingError', LevelUPError)
 }
-},{"errno":120}],"Qh7AIe":[function(require,module,exports){
+},{"errno":120}],"AH9p1J":[function(require,module,exports){
 var process=require("__browserify_process");/* Copyright (c) 2012-2013 LevelUP contributors
  * See list at <https://github.com/rvagg/node-levelup#contributing>
  * MIT +no-false-attribs License
@@ -16402,7 +16402,7 @@ module.exports.destroy = utilStatic('destroy')
 module.exports.repair  = utilStatic('repair')
 
 },{"./batch":81,"./errors":82,"./read-stream":85,"./util":86,"./write-stream":87,"__browserify_process":6,"deferred-leveldown":102,"events":3,"prr":121,"util":19,"xtend":129}],"levelup":[function(require,module,exports){
-module.exports=require('Qh7AIe');
+module.exports=require('AH9p1J');
 },{}],85:[function(require,module,exports){
 /* Copyright (c) 2012-2013 LevelUP contributors
  * See list at <https://github.com/rvagg/node-levelup#contributing>
@@ -18636,8 +18636,8 @@ module.exports={
 }
 
 },{}],"memdown":[function(require,module,exports){
-module.exports=require('9kQvVg');
-},{}],"9kQvVg":[function(require,module,exports){
+module.exports=require('K9qIAB');
+},{}],"K9qIAB":[function(require,module,exports){
 var process=require("__browserify_process"),global=typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {};var util              = require('util')
   , bops              = require('bops')
   , AbstractLevelDOWN = require('abstract-leveldown').AbstractLevelDOWN
